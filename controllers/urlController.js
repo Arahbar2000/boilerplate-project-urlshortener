@@ -7,7 +7,7 @@ const self = {
             short_url: ++max_url
         })
         await newUrl.save();
-        return ++max_url;
+        return max_url;
     },
 
     getMax: async function () {
@@ -17,6 +17,7 @@ const self = {
     },
 
     getUrl: async function (short_url) {
+        console.log('get url is executing');
         const urlData = await urlModel.findOne({ short_url });
         if (urlData) return urlData.original_url;
         else return 0;

@@ -26,11 +26,12 @@ router.post('/new', async function (req, res) {
     }
 });
 
-router.get('/:short_url', async function(req, res) {
+router.get('/:short_url?', async function(req, res) {
     try {
         const short_url = req.params.short_url
+        console.log(short_url);
         const original_url = await getUrl(short_url)
-        res.redirect(original_url);
+        res.redirect(301, original_url);
     } catch (err) {
         res.sendStatus(500);
     }
