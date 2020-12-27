@@ -7,6 +7,7 @@ const self = {
             short_url: ++max_url
         })
         await newUrl.save();
+        return ++max_url;
     },
 
     getMax: async function () {

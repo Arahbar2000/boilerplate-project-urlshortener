@@ -14,8 +14,11 @@ router.post('/new', async function (req, res) {
                 throw new Error("invalid url");
             }
         })
-        await add(req.body.url);
-        res.sendStatus(200);
+        const short_url = await add(req.body.url);
+        res.json({
+            original_url: req.body.url,
+            short_url: short_url
+        });
 
     } catch (err) {
         console.log(err);
