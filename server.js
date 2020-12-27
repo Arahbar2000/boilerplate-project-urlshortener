@@ -16,6 +16,8 @@ app.use(cors());
 app.use('/public', express.static(`${process.cwd()}/public`));
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.text());
 
 app.use('/api/shorturl', shorturl);
 
