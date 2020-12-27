@@ -4,7 +4,8 @@ const { add, getUrl } = require("../controllers/urlController");
 const router = express.Router();
 router.post('/new', async function (req, res) {
     try {
-        const url = new URL(req.body)
+        console.log(req.body.url);
+        const url = new URL(req.body.url);
         if (url.protocol !== 'http:' && url.protocol !== 'https:') {
             throw new Error("invalid url");
         }
@@ -13,7 +14,7 @@ router.post('/new', async function (req, res) {
                 throw new Error("invalid url");
             }
         })
-        await add(req.body);
+        await add(req.body.url);
         res.sendStatus(200);
 
     } catch (err) {

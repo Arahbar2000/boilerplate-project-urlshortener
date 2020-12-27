@@ -15,9 +15,9 @@ app.use(cors());
 
 app.use('/public', express.static(`${process.cwd()}/public`));
 
-app.use(bodyParser.text())
+app.use(bodyParser.json());
 
-app.use('/api/shorturl', shorturl)
+app.use('/api/shorturl', shorturl);
 
 app.get('/', function(req, res) {
   res.sendFile(process.cwd() + '/views/index.html');
